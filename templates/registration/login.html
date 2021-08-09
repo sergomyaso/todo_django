@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <link href="{% static 'css/account_forms.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="active"> Sign In </h2>
+          <!-- Login Form -->
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit"></input>
+</form>
+        </div>
+    </div>
+
+</body>
+</html>

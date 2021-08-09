@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+
+       <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+       <script src="{% static 'lib/bootstrap/js/script.js' %}"></script>
+       <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+      <title>Notes</title>
+   </head>
+   <body>
+      <h1>  Your Notes:  </h1>
+      <form class="decor" method="post" enctype="multipart/form-data" method="/note/">
+         {% csrf_token %}
+         <div class="form-left-decoration"></div>
+         <div class="form-right-decoration"></div>
+         <div class="circle"></div>
+         <div class="form-inner">
+            <h3>Create TODO:</h3>
+            {{ form }}
+            <input type="submit" value="Отправить">
+         </div>
+      </form>
+      <div style="padding-top: 20px">
+         {% if last_notes %}
+         <div class="container">
+            <div class="row">
+               {% for note in last_notes %}
+               <form class="col-md-4 decor-old-node" method="post" action="{% url 'delete_note' id=note.pk%}">
+                  {% csrf_token %}
+                  <div class="form-left-decoration"></div>
+                  <div class="form-right-decoration"></div>
+                  <div class="circle"></div>
+                  <div class="form-inner">
+                     <h3>{{ note.title }}</h3>
+                     <div>{{ note.text }}</div>
+                     <input type="submit" value="DONE!" name="delete_note"/>
+                  </div>
+               </form>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      {% else %}
+      <p class="not-note">You don't have some notes!</p>
+      {% endif %}
+      </div>
+
+         {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}!</p>
+             <p><a href="{% url 'logout' %}">Log out</a></p>
+      {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url 'login' %}">Log In</a>
+      {% endif %}
+    {% block content %}
+    {% endblock content %}
+   </body>
+</html>
