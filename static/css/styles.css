@@ -1,5 +1,5 @@
 body {
-   background: #f69a73;
+   background: #56baed;
 }
 h1{
    text-align: center;
@@ -27,7 +27,7 @@ h1{
    position: absolute;
    width: 50px;
    height: 20px;
-   background: #f69a73;
+   background: #56baed;
    border-radius: 20px;
 }
 .form-left-decoration {
@@ -86,8 +86,8 @@ h1{
 }
 .form-inner input[type="submit"] {
    margin-top: 15px;
-   background: #f69a73;
-   border-bottom: 4px solid #d87d56;
+   background: #56baed;;
+   border-bottom: 4px solid #307ca2;
    color: white;
    font-size: 14px;
 }

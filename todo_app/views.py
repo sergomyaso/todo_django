@@ -4,6 +4,9 @@ from .forms import NoteForm
 from .models import Note
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+number = 123
+number % 3
+
 
 class BaseView(View):
     def get(self, request):
